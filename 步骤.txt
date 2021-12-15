@@ -9,7 +9,7 @@ apt install python3 python3-pip -y    安装python
 
 
 
-有python环境
+有python环境 —————— 在https://replit.com/repls平台上
 pip3 install -r requirements-cli.txt  安装依赖
 
 pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
@@ -25,6 +25,12 @@ python3 gen_sa_accounts.py --create-sas $PROJECTID          创建sa账户到项
 
 python3 gen_sa_accounts.py --download-keys project_id      下载sa账户到本地
 
+cd 到accounts文件夹
+
 grep -oPh '"client_email": "\K[^"]+' *.json > emails.txt           提取sa账号到一个文档
 
-python3 rename_script.py                  重命名
+cd 到create-sa-accounts目录下
+
+zip -r ./xahot.zip ./*    打包根目录所有的文件
+
+下载xahot.zip到本地
