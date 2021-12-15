@@ -1,0 +1,15 @@
+credentials.json accounts token.pickle  如果上传到GitHub仓库heroku分支，在跑actions时，heroku分支的文件会被永久写入heroku容器，
+也就是说，容器每次重启时，不会随heroku分支文件的改变而改变。
+而会随主分支（main）的改变而改变（如 bot文件夹）
+
+要想切换目标盘，只能在config.env文件中填写ACCOUNTS_ZIP_URL 和 TOKEN_PICKLE_URL  两变量
+
+token.pickle 代表本地盘
+
+accounts 代表团队盘
+
+config.env文件每次改变，都要重启bot
+
+bot的每次重启都会重新写入一遍config.env文件中的配置（即覆盖掉之前的配置） 如更新accounts 和 token.pickle 目标盘 等
+
+可以只 上传/更新 token.pickle，也可以只 上传/更新 accounts，也可以都上传，互不影响

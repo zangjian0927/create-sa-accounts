@@ -1,0 +1,30 @@
+上传好 credentials.json 文件  开启Google drive权限，service usage权限      任何账号都可以
+
+
+
+无python环境
+apt install wget curl screen git sudo python3-distutils -y   安装依赖
+
+apt install python3 python3-pip -y    安装python
+
+
+
+有python环境
+pip3 install -r requirements-cli.txt  安装依赖
+
+pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
+
+python3 generate_drive_token.py      生成token.pikle        访问所授权账号的本地盘   本地盘授权  只访问Google drive 
+
+
+python3 gen_sa_accounts.py --list-projects                            列出项目    访问Google drive    iam   访问团队盘   团队盘授权  在哪个账号创建sa，就用哪个号授权
+
+python3 gen_sa_accounts.py --enable-services $PROJECTID   使能服务
+
+python3 gen_sa_accounts.py --create-sas $PROJECTID          创建sa账户到项目
+
+python3 gen_sa_accounts.py --download-keys project_id      下载sa账户到本地
+
+grep -oPh '"client_email": "\K[^"]+' *.json > emails.txt           提取sa账号到一个文档
+
+python3 rename_script.py                  重命名
